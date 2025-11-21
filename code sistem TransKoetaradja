@@ -1,1 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
+//Enum untuk tipe penumpang : biasa atau prioritas
+enum TipePenumpang {
+  BIASA,
+  PRIORITAS
+}
+
+//Interface untuk perilaku umum penumpang
+interface PenumpangInterface {
+  boolean bisaDudukPrioritas(); //untuk cek apakah boleh duduk di kursi prioritas atau tidak
+  boolean bayarOngkos(int ongkos); //bayar ongkos bus, dan akan dikurangi saldonya
+  int getUmur();
+  boolean isHamil();
+  TipePenumpang getTipe();
+  String getId();
+}
