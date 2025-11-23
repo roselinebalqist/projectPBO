@@ -45,3 +45,40 @@ abstract class Penumpang implements PenumpangInterface {
     }
     return false; // saldo kurang
   }
+
+   @Override
+    public String toString() {
+        return String.format("ID: %s, Umur: %d, Hamil: %b, Saldo: %d, Tipe: %s", id, umur, hamil, saldo, getTipe());
+    }
+}
+
+// Penumpang biasa tidak boleh duduk kursi prioritas
+class PenumpangBiasa extends Penumpang {
+    public PenumpangBiasa(String id, int umur, boolean hamil, int saldo) {
+        super(id, umur, hamil, saldo);
+    }
+
+    public boolean bisaDudukPrioritas() {
+        return false; // Tidak boleh duduk kursi prioritas
+    }
+
+    public TipePenumpang getTipe() {
+        return TipePenumpang.BIASA;
+    }
+}
+
+// Penumpang prioritas boleh duduk kursi prioritas jika berlaku kriterianya
+class PenumpangPrioritas extends Penumpang {
+    public PenumpangPrioritas(String id, int umur, boolean hamil, int saldo) {
+        super(id, umur, hamil, saldo);
+    }
+
+    // Lansia >60, anak <10, atau ibu hamil boleh duduk prioritas
+    public boolean bisaDudukPrioritas() {
+        return umur > 60 || umur < 10 || hamil;
+    }
+
+    public TipePenumpang getTipe() {
+        return TipePenumpang.PRIORITAS;
+    }
+}
