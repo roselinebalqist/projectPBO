@@ -82,3 +82,10 @@ class PenumpangPrioritas extends Penumpang {
         return TipePenumpang.PRIORITAS;
     }
 }
+
+// Custom exception jika bus sudah penuh tidak bisa naik lagi
+class BusFullException extends Exception {
+    public BusFullException(String message) {
+        super(message);
+    }
+}
