@@ -101,3 +101,11 @@ class Bus {
     private List<Penumpang> kursiPrioritas = new ArrayList<>();
     private List<Penumpang> penumpangBerdiri = new ArrayList<>();
     private int totalPendapatan = 0;
+
+    // Getter untuk koleksi penumpang (fix private access error)
+    public List<Penumpang> getKursiBiasa() { return kursiBiasa; }
+    public List<Penumpang> getKursiPrioritas() { return kursiPrioritas; }
+    public List<Penumpang> getPenumpangBerdiri() { return penumpangBerdiri; }
+
+    // Menyimpan log aktivitas harian (naik/turun)
+    private List<String> logAktivitas = new ArrayList<>();
