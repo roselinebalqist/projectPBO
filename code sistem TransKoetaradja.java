@@ -109,3 +109,15 @@ class Bus {
 
     // Menyimpan log aktivitas harian (naik/turun)
     private List<String> logAktivitas = new ArrayList<>();
+
+    // Method untuk menaikkan penumpang sesuai aturan dan kapasitas bus
+    public void naik(Penumpang p) throws BusFullException {
+        if (!p.bayarOngkos(ONGKOS)) {
+            System.out.println("Penumpang " + p.id + " saldo kurang, tidak bisa naik.");
+            return;
+        }
+
+        int totalPenumpang = kursiBiasa.size() + kursiPrioritas.size() + penumpangBerdiri.size();
+        if (totalPenumpang >= KAPASITAS_TOTAL) {
+            throw new BusFullException("Bus sudah penuh, penumpang tidak bisa naik.");
+        }
