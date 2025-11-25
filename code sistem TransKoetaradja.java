@@ -89,3 +89,15 @@ class BusFullException extends Exception {
         super(message);
     }
 }
+
+// Class Bus mengatur penumpang di kursi biasa, prioritas, dan berdiri
+class Bus {
+    private final int KURSI_BIASA = 16;
+    private final int KURSI_PRIORITAS = 4;
+    private final int KAPASITAS_TOTAL = 40;
+    private final int ONGKOS = 5000;
+
+    private List<Penumpang> kursiBiasa = new ArrayList<>();
+    private List<Penumpang> kursiPrioritas = new ArrayList<>();
+    private List<Penumpang> penumpangBerdiri = new ArrayList<>();
+    private int totalPendapatan = 0;
