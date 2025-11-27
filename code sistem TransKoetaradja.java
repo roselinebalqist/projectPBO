@@ -121,3 +121,28 @@ class Bus {
         if (totalPenumpang >= KAPASITAS_TOTAL) {
             throw new BusFullException("Bus sudah penuh, penumpang tidak bisa naik.");
         }
+      
+        if (p.getTipe() == TipePenumpang.PRIORITAS && p.bisaDudukPrioritas()) {
+            if (kursiPrioritas.size() < KURSI_PRIORITAS) {
+                kursiPrioritas.add(p);
+                totalPendapatan += ONGKOS;
+                logAktivitas.add("Naik: " + p.id + " duduk kursi prioritas");
+                System.out.println("Penumpang prioritas naik duduk kursi prioritas.");
+                return;
+            } else if (kursiBiasa.size() < KURSI_BIASA) {
+                kursiBiasa.add(p);
+                totalPendapatan += ONGKOS;
+                logAktivitas.add("Naik: " + p.id + " duduk kursi biasa");
+                System.out.println("Penumpang prioritas naik duduk kursi biasa.");
+                return;
+            }
+          
+        } else if (p.getTipe() == TipePenumpang.BIASA) {
+            if (kursiBiasa.size() < KURSI_BIASA) {
+                kursiBiasa.add(p);
+                totalPendapatan += ONGKOS;
+                logAktivitas.add("Naik: " + p.id + " duduk kursi biasa");
+                System.out.println("Penumpang biasa naik duduk kursi biasa.");
+                return;
+            }
+        }
