@@ -146,3 +146,24 @@ class Bus {
                 return;
             }
         }
+      
+        if (totalPenumpang < KAPASITAS_TOTAL) {
+            penumpangBerdiri.add(p);
+            totalPendapatan += ONGKOS;
+            logAktivitas.add("Naik: " + p.id + " berdiri");
+            System.out.println("Penumpang naik berdiri.");
+            return;
+        }
+
+        throw new BusFullException("Tidak bisa naik, kursi prioritas khusus prioritas dan kursi biasa penuh.");
+    }
+  
+    // Method turunkan penumpang dari bus
+    public void turun(Penumpang p) {
+        if (kursiBiasa.remove(p) || kursiPrioritas.remove(p) || penumpangBerdiri.remove(p)) {
+            logAktivitas.add("Turun: " + p.id);
+            System.out.println("Penumpang turun dari bus.");
+        } else {
+            System.out.println("Penumpang tidak ditemukan di bus.");
+        }
+    }
