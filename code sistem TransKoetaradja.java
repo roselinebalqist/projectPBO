@@ -167,3 +167,23 @@ class Bus {
             System.out.println("Penumpang tidak ditemukan di bus.");
         }
     }
+
+    // Laporan jumlah penumpang dan total pendapatan
+    public void laporan() {
+        System.out.println("Jumlah penumpang kursi biasa: " + kursiBiasa.size());
+        System.out.println("Jumlah penumpang kursi prioritas: " + kursiPrioritas.size());
+        System.out.println("Jumlah penumpang berdiri: " + penumpangBerdiri.size());
+        System.out.println("Total pendapatan bus: Rp" + totalPendapatan);
+    }
+
+    // Laporan harian aktivitas naik-turun penumpang
+    public void laporanHarian() {
+        System.out.println("\n--- Laporan Harian ---");
+        if (logAktivitas.isEmpty()) {
+            System.out.println("Tidak ada aktivitas hari ini.");
+        } else {
+            for (String aktivitas : logAktivitas) {
+                System.out.println(aktivitas);
+            }
+        }
+    }
